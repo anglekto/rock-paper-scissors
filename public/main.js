@@ -1,107 +1,38 @@
 // Shorthand
 const x = (element) => document.querySelector(element)
+let playerOne = ''
+let playerTwo = ''
 
-// if the Rock Button is clicked, 'Rock' will display
-const playerOneClickedRock = () => {
-  x('.player-1-selection').textContent = 'Rock'
-  if (x('.player-1-selection').textContent === 'Rock' & x('.player-2-selection').textContent === 'Scissors') {
-    alert('Player 1 has won the game!')
-    x('.player-1-selection').textContent = ''
-    x('.player-2-selection').textContent = ''
-  } else if (x('.player-1-selection').textContent === 'Rock' & x('.player-2-selection').textContent === 'Paper') {
-    alert('Player 2 has won the game!')
-    x('.player-1-selection').textContent = ''
-    x('.player-2-selection').textContent = ''
-  } else if (x('.player-1-selection').textContent === 'Rock' &
-  x('.player-2-selection').textContent === 'Rock') {
-    alert('It is a tie!')
-    x('.player-1-selection').textContent = ''
-    x('.player-2-selection').textContent = ''
-  }
+const playerOneSelection = (selection) => {
+  playerOne = selection
+  x('.player-1-selection').textContent = selection
+  whoIsTheWinner()
 }
-const playerTwoClickedRock = () => {
-  x('.player-2-selection').textContent = 'Rock'
-  if (x('.player-1-selection').textContent === 'Scissors' & x('.player-2-selection').textContent === 'Rock') {
+
+const playerTwoSelection = (selection) => {
+  playerTwo = selection
+  x('.player-2-selection').textContent = selection
+  whoIsTheWinner()
+}
+
+const whoIsTheWinner = () => {
+  if (playerOne === 'Rock' && playerTwo === 'Scissors' || playerOne === 'Paper' && playerTwo === 'Rock' || playerOne === 'Scissors' && playerTwo === 'Paper') {
+    alert('Player 1 has won the game!')
+    resetGame()
+  } else if (playerTwo === 'Rock' && playerOne === 'Scissors' || playerTwo === 'Paper' && playerOne === 'Rock' || playerTwo === 'Scissors' && playerOne === 'Paper') {
     alert('Player 2 has won the game!')
-    x('.player-1-selection').textContent = ''
-    x('.player-2-selection').textContent = ''
-  } else if (x('.player-1-selection').textContent === 'Paper' & x('.player-2-selection').textContent === 'Rock') {
-    alert('Player 1 won the game!')
-    x('.player-1-selection').textContent = ''
-    x('.player-2-selection').textContent = ''
-  } else if (x('.player-1-selection').textContent === 'Rock' & x('.player-2-selection').textContent === 'Rock') {
-    alert('It is a tie!')
-    x('.player-1-selection').textContent = ''
-    x('.player-2-selection').textContent = ''
+    resetGame()
+  } else if (playerOne === 'Rock' && playerTwo === 'Rock' || playerOne === 'Paper' && playerTwo === 'Paper' || playerOne === 'Scissors' && playerTwo === 'Scissors') {
+    alert('TIE!')
+    resetGame()
   }
 }
 
-// if the Paper Button is clicked, 'Paper' will display
-const playerOneClickedPaper = () => {
-  x('.player-1-selection').textContent = 'Paper'
-  if (x('.player-1-selection').textContent === 'Paper' & x('.player-2-selection').textContent === 'Rock') {
-    alert('Player 1 has won the game!')
-    x('.player-1-selection').textContent = ''
-    x('.player-2-selection').textContent = ''
-  } else if (x('.player-1-selection').textContent === 'Paper' & x('.player-2-selection').textContent === 'Scissors') {
-    alert('Player 2 has won the game!')
-    x('.player-1-selection').textContent = ''
-    x('.player-2-selection').textContent = ''
-  } else if (x('.player-1-selection').textContent === 'Paper' & x('.player-2-selection').textContent === 'Paper') {
-    alert('It is a tie!')
-    x('.player-1-selection').textContent = ''
-    x('.player-2-selection').textContent = ''
-  }
-}
-const playerTwoClickedPaper = () => {
-  x('.player-2-selection').textContent = 'Paper'
-  if (x('.player-1-selection').textContent === 'Rock' & x('.player-2-selection').textContent === 'Paper') {
-    alert('Player 2 has won the game!')
-    x('.player-1-selection').textContent = ''
-    x('.player-2-selection').textContent = ''
-  } else if (x('.player-1-selection').textContent === 'Scissors' & x('.player-2-selection').textContent === 'Paper') {
-    alert('Player 1 has won the game!')
-    x('.player-1-selection').textContent = ''
-    x('.player-2-selection').textContent = ''
-  } else if (x('.player-1-selection').textContent === 'Paper' & x('.player-2-selection').textContent === 'Paper') {
-    alert('It is a tie!')
-    x('.player-1-selection').textContent = ''
-    x('.player-2-selection').textContent = ''
-  }
-}
-
-// if the Scissors Button is clicked, 'Scissors' will display
-const playerOneClickedScissors = () => {
-  x('.player-1-selection').textContent = 'Scissors'
-  if (x('.player-1-selection').textContent === 'Scissors' & x('.player-2-selection').textContent === 'Rock') {
-    alert('Player 2 has won the game!')
-    x('.player-1-selection').textContent = ''
-    x('.player-2-selection').textContent = ''
-  } else if (x('.player-1-selection').textContent === 'Scissors' & x('.player-2-selection').textContent === 'Paper') {
-    alert('Player 1 has won the game!')
-    x('.player-1-selection').textContent = ''
-    x('.player-2-selection').textContent = ''
-  } else if (x('.player-1-selection').textContent === 'Scissors' & x('.player-2-selection').textContent === 'Scissors') {
-    alert('It is a tie!')
-    x('.player-1-selection').textContent = ''
-    x('.player-2-selection').textContent = ''
-  }
-}
-const playerTwoClickedScissors = () => {
-  x('.player-2-selection').textContent = 'Scissors'
-  if (x('.player-1-selection').textContent === 'Rock' & x('.player-2-selection').textContent === 'Scissors') {
-    alert('Player 1 has won the game!') 
-    x('.player-1-selection').textContent = ''
-    x('.player-2-selection').textContent = ''
-  } else if (x('.player-1-selection').textContent === 'Paper' & x('.player-2-selection').textContent === 'Scissors') {
-    alert('Player 2 has won the game!')
-    x('.player-1-selection').textContent = ''
-    x('.player-2-selection').textContent = ''
-  } else if (x('.player-1-selection').textContent === 'Scissors' & x('.player-2-selection').textContent === 'Scissors') {
-    alert('It is a tie!')
-    x('.player-1-selection').textContent = ''
-    x('.player-2-selection').textContent = ''
-  }
+const resetGame = () => {
+  playerOne = ''
+  playerTwo = ''
+  x('.player-1-selection').textContent = ''
+  x('.player-2-selection').textContent = ''
 }
 
 // This function enables the user to input their name
@@ -117,13 +48,14 @@ const enterPlayerTwoName = () => {
 }
 
 const main = () => {
-  x('.player-1-rock').addEventListener('click', playerOneClickedRock)
-  x('.player-1-paper').addEventListener('click', playerOneClickedPaper)
-  x('.player-1-scissors').addEventListener('click', playerOneClickedScissors)
 
-  x('.player-2-rock').addEventListener('click', playerTwoClickedRock)
-  x('.player-2-paper').addEventListener('click', playerTwoClickedPaper)
-  x('.player-2-scissors').addEventListener('click', playerTwoClickedScissors)
+  x('.player-1-rock').addEventListener('click', () => playerOneSelection('Rock'))
+  x('.player-1-paper').addEventListener('click', () => playerOneSelection('Paper'))
+  x('.player-1-scissors').addEventListener('click', () => playerOneSelection('Scissors'))
+
+  x('.player-2-rock').addEventListener('click', () => playerTwoSelection('Rock'))
+  x('.player-2-paper').addEventListener('click', () => playerTwoSelection('Paper'))
+  x('.player-2-scissors').addEventListener('click', () => playerTwoSelection('Scissors'))
 
   x('.update-player-1-name').addEventListener('click', enterPlayerOneName)
   x('.update-player-2-name').addEventListener('click', enterPlayerTwoName)
